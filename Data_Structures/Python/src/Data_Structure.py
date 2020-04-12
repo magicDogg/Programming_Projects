@@ -1,4 +1,5 @@
-# Self-implementing data structure practice
+# Self-implementing data structure practice library
+# You-Young Lee, Richard Fields
 
 
 # Node class - Data block that contains the data + points the next node block
@@ -23,19 +24,19 @@ class Node:
 
 # Linked List class
 class LinkedList:
-    # Constructor
+    # Constructor - Merely creating an empty linked list
     def __init__(self):
         self.head = None
 
     # Insert the new node at the beginning of the Linked List
-    # Time complexity: O(1)
+    # Time complexity: O(1) <Linked List< vs. O(n) <Array>, where n is proportional to the size of the container
     def insert(self, data):
         new_node = Node(data)
         new_node.set_next(self.head)
         self.head = new_node
 
     # Count how many nodes are in the linked list
-    # Time complexity: O(n)
+    # Time complexity: O(n) <Linked List> vs. O(1) <Array>
     def size(self):
         current_node = self.head
         count = 0
@@ -48,6 +49,7 @@ class LinkedList:
 
     # Search the matching node throughout the linked list
     # Time complexity: O(n) <We are most likely to find the desired node at n/2 index by prob where n is # of nodes>
+    # For search function, time complexity of Array search and Linked List search are both O(n)
     def search(self, data):
         current_node = self.head
         found = False
