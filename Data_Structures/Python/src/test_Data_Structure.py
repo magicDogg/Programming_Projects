@@ -4,9 +4,23 @@
 import Data_Structure as DS
 
 
+# Test bench switch
 test_mode = 'Linked_List'
 
-if test_mode == 'Linked_List':
+
+# Test Node class
+def test_node():
+    a = DS.Node(1)
+    b = DS.Node(3.14)
+    c = DS.Node("I am the Ice King")
+
+    print a.get_data()
+    print b.get_data()
+    print c.get_data()
+
+
+# Test Linked List class
+def test_linked_list():
     # mll stands for my linked list
     mll = DS.LinkedList()
 
@@ -25,3 +39,10 @@ if test_mode == 'Linked_List':
     # Test search
     print mll.search(1)
     print mll.search(3)
+
+
+# Execute the switched test bench
+if test_mode == 'Node':
+    test_node()
+elif test_mode == 'Linked_List':
+    test_linked_list()
