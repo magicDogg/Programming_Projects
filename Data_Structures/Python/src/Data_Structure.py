@@ -90,5 +90,37 @@ class LinkedList:
         current_node = self.head
 
         while current_node:
-            print current_node.get_data()
+            print(current_node.get_data())
             current_node = current_node.get_next()
+
+
+# Circular Linked List class (derived class from LinkedList parent class)
+class CircularLinkedList(LinkedList):
+    # keep (use inheritance): init
+    # change (use polymorphism): insert
+
+    def insert(self, data):
+        new_node = Node(data)
+        # if you are adding the first node (not self.head = True if self.head = None)
+        if not self.head:
+          self.head = new_node
+          self.head.set_next(new_node)
+        # if not adding first node
+        else:
+            new_node.set_next(self.head)
+            current_node = self.head
+            while current_node.get_next() != self.head:
+                current_node = current_node.get_next()
+            #TODO: for some reason, changing 'current_node.next' also changes self.head.next (bc immutable object?)
+            current_node.set_next(new_node)
+            self.head = new_node
+
+
+
+# Doubly Linked List class
+class DoublyLinkedList:
+    # code for doubly linked list
+    def insert(self, data):
+        new_node = Node(data)
+        new_node.set_next(self.head)
+        self.head = new_node
