@@ -116,7 +116,6 @@ class CircularLinkedList(LinkedList):
             self.head = new_node
 
 
-
 # Doubly Linked List class
 class DoublyLinkedList:
     # code for doubly linked list
@@ -124,3 +123,49 @@ class DoublyLinkedList:
         new_node = Node(data)
         new_node.set_next(self.head)
         self.head = new_node
+
+
+# Stack class
+class Stack:
+    # Constructor - Creating an empty stack
+    def __init__(self):
+        self.tail = None
+
+    # Insert the new data at the top of the stack
+    def push(self, data):
+        print("I am the Ice King")
+
+    # Remove + Return the data from the top of the stack
+    def pop(self):
+        print("I am the Ice King")
+
+    # Return the data from the top of the stack without removal
+    def top(self):
+        print("I am the Ice King")
+
+    # Print all the elements from the stack - this method exists for debugging purpose
+    def print_all(self):
+        print("I am the Ice King")
+
+
+# Queue class
+class Queue:
+    # Constructor - Creating an empty queue
+    def __init__(self):
+        self.head = None
+
+    # Insert the new data at the front of the queue
+    def enqueue(self, data):
+        print("I am the Ice King")
+
+    # Remove + Return the data from the end of the queue
+    def dequeue(self):
+        print("I am the Ice King")
+
+    # Return the data from the end of the queue without removal
+    def get(self):
+        print("I am the Ice King")
+
+    # Print all the elements from the queue - this method exists for debugging purpose
+    def print_all(self):
+        print("I am the Ice King")
