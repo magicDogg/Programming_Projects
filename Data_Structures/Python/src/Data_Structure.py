@@ -22,6 +22,35 @@ class Node:
         return self.next
 
 
+# DoubleNode class - Data block that contains data + points to the next & previous block
+class DoubleNode:
+    # Constructor
+    def __init__(self, data):
+        self.data = data  # Assign data
+        self.next = None  # Initialize next as null
+        self.prev = None  # Initialize prev as null
+
+    # Get the data belongs to the node
+    def get_data(self):
+        return self.data
+
+    # Set next toward the different node
+    def set_next(self, new_next):
+        self.next = new_next
+
+    # Set prev toward the different node
+    def set_prev(self, new_prev):
+        self.prev = new_prev
+
+    # Get the node that is pointed by next
+    def get_next(self):
+        return self.next
+
+    # Get the node that is pointed by prev
+    def get_prev(self):
+        return self.prev
+
+
 # Linked List class
 class LinkedList:
     # Constructor - Merely creating an empty linked list
@@ -98,31 +127,58 @@ class LinkedList:
 class CircularLinkedList(LinkedList):
     # keep (use inheritance): init
     # change (use polymorphism): insert
+    # Constructor - Merely creating an empty linked list
+    def __init__(self):
+        self.head = None
+        self.tail = None
 
     def insert(self, data):
         new_node = Node(data)
-        # if you are adding the first node (not self.head = True if self.head = None)
-        if not self.head:
-          self.head = new_node
-          self.head.set_next(new_node)
-        # if not adding first node
+        new_node.set_next(self.tail)
+        current_node = self.head
+        # if the list is empty
+        if current_node is None:
+            self.head = new_node
+            self.head.set_next(self.tail)
+        # if the list is not empty
         else:
             new_node.set_next(self.head)
-            current_node = self.head
-            while current_node.get_next() != self.head:
-                current_node = current_node.get_next()
-            #TODO: for some reason, changing 'current_node.next' also changes self.head.next (bc immutable object?)
-            current_node.set_next(new_node)
             self.head = new_node
 
 
 # Doubly Linked List class
-class DoublyLinkedList:
+class DoublyLinkedList(LinkedList):
     # code for doubly linked list
-    def insert(self, data):
-        new_node = Node(data)
-        new_node.set_next(self.head)
-        self.head = new_node
+    # Constructor - Merely creating an empty linked list
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    # if you assign a val to an arg, it sets as default if user doesn't input val
+    def insert(self, data, prev = None, next = None):
+        new_node = DoubleNode(data)
+        prev_node = prev
+        next_node = next
+        # if list is empty
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            self.head.set_prev(None)
+            self.head.set_next(None)
+        # if list not empty and add node before head
+        elif next is self.head.get_data():
+            self.head.set_prev(new_node)
+            new_node.set_next(self.head)
+            self.head = new_node
+        # if list not empty and add node after tail
+        elif prev is self.tail.get_data():
+            self.tail.set_next(new_node)
+            new_node.set_prev(self.tail)
+            self.tail = new_node
+        # if list not empty and add node in between head and tail
+        else:
+            new_node.set_prev(prev)
+            new_node.set_next(next)
 
 
 # Stack class
@@ -134,7 +190,8 @@ class Stack:
     # Insert the new data at the top of the stack
     def push(self, data):
         print("I am the Ice King")
-
+        new_node = DoubleNode(data)
+        
     # Remove + Return the data from the top of the stack
     def pop(self):
         print("I am the Ice King")
