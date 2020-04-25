@@ -157,8 +157,19 @@ class DoublyLinkedList(LinkedList):
     # if you assign a val to an arg, it sets as default if user doesn't input val
     def insert(self, data, prev = None, next = None):
         new_node = DoubleNode(data)
-        prev_node = prev
-        next_node = next
+        # check if previous and next exist in list first, if they do, identify
+        if self.search(prev) & self.search(next):
+            found_prev = False
+            found_next = False
+            current_node = self.head
+            while (found_prev and found_next) is False:
+                if current_node.get_data() == prev:
+                    prev_node = current_node
+                    found_prev = True
+                    next_node = current_node.get_next()
+                    found_next = True
+                else:
+                    current_node = current_node.get_next()
         # if list is empty
         if self.head is None:
             self.head = new_node
@@ -177,8 +188,11 @@ class DoublyLinkedList(LinkedList):
             self.tail = new_node
         # if list not empty and add node in between head and tail
         else:
-            new_node.set_prev(prev)
-            new_node.set_next(next)
+            new_node.set_prev(prev_node)
+            new_node.set_next(next_node)
+            prev_node.set_next(new_node)
+            next_node.set_prev(prev_node)
+
 
 
 # Stack class

@@ -70,24 +70,27 @@ def test_doubly_linked_list():
     # Test insert node when list is empty - List should be 1
     mdll.insert(1)
     mdll.print_all()
+
     # Test insert node before head - List should be 0,1
-    mdll.insert(0,1,None)
+    mdll.insert(0,None,1)
     mdll.print_all()
+
     # Test insert node after tail - List should be 0,1,2
-    mdll.insert(2,None,0)
+    mdll.insert(2,1,None)
     mdll.print_all()
+
     # Test insert node in between nodes - List should be 0,1,1.5,2
     mdll.insert(1.5,1,2)
     mdll.print_all()
 
-    # Test size of the list
+    # Test size of the list - should be 4
     print(mdll.size())
 
     # Test delete - List should be 0,1,2
     mdll.delete(1.5)
     mdll.print_all()
 
-    # Test search
+    # Test search - should be True and then False
     print(mdll.search(1))
     print(mdll.search(1.5))
 
