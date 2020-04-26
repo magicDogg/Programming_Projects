@@ -4,9 +4,6 @@
 #ifndef LinkedList_h
 #define LinkedList_h
 
-#include <iostream>
-using namespace std;
-
 template <typename T>
 struct Node
 {

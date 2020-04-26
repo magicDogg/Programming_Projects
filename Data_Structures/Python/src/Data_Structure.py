@@ -155,7 +155,7 @@ class DoublyLinkedList(LinkedList):
         self.tail = None
 
     # if you assign a val to an arg, it sets as default if user doesn't input val
-    def insert(self, data, prev = None, next = None):
+    def insert(self, data, prev=None, next=None):
         new_node = DoubleNode(data)
         # check if previous and next exist in list first, if they do, identify
         if self.search(prev) & self.search(next):
@@ -199,7 +199,6 @@ class Stack:
     # Constructor - Creating an empty queue
     def __init__(self):
         self.head = None
-        self.tail = None
 
     # Insert the new data at the top of the stack
     def push(self, data):
@@ -228,7 +227,6 @@ class Stack:
         while current_node:
             print(current_node.get_data())
             current_node = current_node.get_next()
-
 
 
 # Queue class
@@ -286,3 +284,47 @@ class Queue:
         while current_node:
             print(current_node.get_data())
             current_node = current_node.get_next()
+
+
+# Binary Search Tree class
+class BST:
+    # Constructor - Creating an empty BST
+    def __init__(self):
+        self.root = None
+
+    # Insert the new data at the front of the queue
+    def insert(self, data):
+        print("I am the Ice King")
+
+    # Search for the matching node throughout the BST
+    def search(self, data):
+        print("I am the Ice King")
+
+    # Search for the right node contains the min value throughout the BST
+    def find_min(self):
+        print("I am the Ice King")
+
+    # Search for the right node contains the max value throughout the BST
+    def find_max(self):
+        print("I am the Ice King")
+
+    # Compute the height of the BST - Use recursion to implement
+    def find_height(self):
+        print("I am the Ice King")
+
+    # Traverse through all the nodes in BST and print them sequentially through the lower depth + from left to right
+    # Use Queue to implement
+    def level_order(self):
+        print("I am the Ice King")
+
+    # Traverse through the BST pre_order - Use recursion to implement
+    def pre_order(self):
+        print("I am the Ice King")
+
+    # Traverse through the BST in_order - Use recursion to implement
+    def in_order(self):
+        print("I am the Ice King")
+
+    # Traverse through the BST post_order - Use recursion to implement
+    def post_order(self):
+        print("I am the Ice King")

@@ -40,6 +40,7 @@ def test_linked_list():
     print(mll.search(1))
     print(mll.search(3))
 
+
 # Test Circular Linked List
 def test_circular_linked_list():
     # mcll stands for my circular linked list
@@ -64,7 +65,7 @@ def test_circular_linked_list():
 
 # Test Doubly Linked List
 def test_doubly_linked_list():
-    # mcll stands for my doubly linked list
+    # mdll stands for my doubly linked list
     mdll = DS.DoublyLinkedList()
 
     # Test insert node when list is empty - List should be 1
@@ -139,6 +140,7 @@ def test_stack():
     print(ms.pop())
     print('after pop')
     ms.print_all()
+
 
 # Execute the switched test bench
 if test_mode == 'Node':
