@@ -5,7 +5,7 @@ import Data_Structure as DS
 
 
 # Test bench switch
-test_mode = 'Doubly_Linked_List'
+test_mode = 'queue'
 
 
 # Test Node class
@@ -95,6 +95,36 @@ def test_doubly_linked_list():
     print(mdll.search(1.5))
 
 
+# Test Queue
+def test_queue():
+    # mq stands for my queue
+    mq = DS.Queue()
+
+    # Test enqueue function
+    for i in range(0, 5):
+        mq.enqueue(i)
+    mq.print_all()
+
+    # Test dequeue function - should be (4,3,2,1) (4,3,2) (4,3)
+    mq.dequeue()
+    mq.print_all()
+
+    mq.dequeue()
+    mq.print_all()
+
+    mq.dequeue()
+    mq.print_all()
+
+    # Test get function - should be 3
+    print(mq.get())
+
+
+# Test Stack
+def test_stack():
+
+    # ms stands for my stack
+    ms = DS.Stack()
+
 # Execute the switched test bench
 if test_mode == 'Node':
     test_node()
@@ -104,4 +134,8 @@ elif test_mode == 'Circular_Linked_List':
     test_circular_linked_list()
 elif test_mode == 'Doubly_Linked_List':
     test_doubly_linked_list()
+elif test_mode == 'queue':
+    test_queue()
+elif test_mode == 'stack':
+    test_stack()
 

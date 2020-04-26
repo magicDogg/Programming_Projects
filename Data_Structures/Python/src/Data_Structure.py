@@ -224,19 +224,53 @@ class Queue:
     # Constructor - Creating an empty queue
     def __init__(self):
         self.head = None
+        self.tail = None
 
     # Insert the new data at the front of the queue
     def enqueue(self, data):
-        print("I am the Ice King")
+        new_node = DoubleNode(data)
+        # if queue is empty
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            self.tail.set_next(None)
+            self.size()
+        # if queue has only 1 node
+        elif self.size() == 1:
+            new_node.set_next(self.head)
+            self.head = new_node
+            self.tail.set_prev(new_node)
+        # if queue is not empty
+        else:
+            new_node.set_next(self.head)
+            self.head.set_prev(new_node)
+            self.head = new_node
 
     # Remove + Return the data from the end of the queue
     def dequeue(self):
-        print("I am the Ice King")
+        # return data from end of queue (tail)
+        old_tail = self.tail
+        # replace tail with prev node
+        self.tail = self.tail.get_prev()
+        self.tail.set_next(None)
+        return old_tail.get_data()
+
+    # return size of queue
+    def size(self):
+        current_node = self.head
+        count = 0
+        while current_node:
+            count = count+1
+            current_node = current_node.get_next()
+        return count
 
     # Return the data from the end of the queue without removal
     def get(self):
-        print("I am the Ice King")
+        return self.tail.get_data()
 
     # Print all the elements from the queue - this method exists for debugging purpose
     def print_all(self):
-        print("I am the Ice King")
+        current_node = self.head
+        while current_node:
+            print(current_node.get_data())
+            current_node = current_node.get_next()
