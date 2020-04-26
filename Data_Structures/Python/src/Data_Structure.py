@@ -194,29 +194,41 @@ class DoublyLinkedList(LinkedList):
             next_node.set_prev(prev_node)
 
 
-
 # Stack class
 class Stack:
-    # Constructor - Creating an empty stack
+    # Constructor - Creating an empty queue
     def __init__(self):
+        self.head = None
         self.tail = None
 
     # Insert the new data at the top of the stack
     def push(self, data):
-        print("I am the Ice King")
-        new_node = DoubleNode(data)
+        new_node = Node(data)
+        # if stack is empty
+        if self.head is None:
+            self.head = new_node
+            self.head.set_next(None)
+        else:
+            new_node.set_next(self.head)
+            self.head = new_node
         
     # Remove + Return the data from the top of the stack
     def pop(self):
-        print("I am the Ice King")
+        old_head = self.head
+        self.head = self.head.get_next()
+        return old_head.get_data()
 
     # Return the data from the top of the stack without removal
     def top(self):
-        print("I am the Ice King")
+        return self.head.get_data()
 
     # Print all the elements from the stack - this method exists for debugging purpose
     def print_all(self):
-        print("I am the Ice King")
+        current_node = self.head
+        while current_node:
+            print(current_node.get_data())
+            current_node = current_node.get_next()
+
 
 
 # Queue class
@@ -240,7 +252,7 @@ class Queue:
             new_node.set_next(self.head)
             self.head = new_node
             self.tail.set_prev(new_node)
-        # if queue is not empty
+        # if queue has more than 1 node
         else:
             new_node.set_next(self.head)
             self.head.set_prev(new_node)

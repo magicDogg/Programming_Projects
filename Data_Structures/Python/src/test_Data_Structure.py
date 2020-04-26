@@ -5,7 +5,7 @@ import Data_Structure as DS
 
 
 # Test bench switch
-test_mode = 'queue'
+test_mode = 'stack'
 
 
 # Test Node class
@@ -121,9 +121,24 @@ def test_queue():
 
 # Test Stack
 def test_stack():
-
     # ms stands for my stack
     ms = DS.Stack()
+
+    # Test push function - should be 4,3,2,1,0
+    for i in range(0, 5):
+        ms.push(i)
+    ms.print_all()
+
+    # Test top function - should be 4
+    print(ms.top())
+
+    # Test pop function - should be 4. print all should show 3,2,1,0
+    print('before pop')
+    ms.print_all()
+    print('this is what is popped')
+    print(ms.pop())
+    print('after pop')
+    ms.print_all()
 
 # Execute the switched test bench
 if test_mode == 'Node':
