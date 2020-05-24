@@ -5,7 +5,7 @@ import Data_Structure as DS
 
 
 # Test bench switch
-test_mode = 'stack'
+test_mode = 'BST'
 
 
 # Test Node class
@@ -141,6 +141,36 @@ def test_stack():
     print('after pop')
     ms.print_all()
 
+# Test BST
+def test_BST():
+    # mbst stands for my binary search tree
+    mbst = DS.BST()
+
+    # Test insert function (insert left and right with two levels)
+    mbst.insert(5)
+    mbst.insert(7)
+    mbst.insert(6)
+    mbst.insert(8)
+    mbst.insert(3)
+    mbst.insert(2)
+    mbst.insert(4)
+    mbst.insert(3) # should not insert duplicate
+    # should be:
+    #                 5
+    #              /     \
+    #             3       7
+    #            / \     / \
+    #           2   4   6   8
+
+    #TODO: test search
+    #TODO: test find min
+    #TODO: test find max
+    #TODO: test find height
+    #TODO: test level order
+    #TODO: test pre order
+    #TODO: test in order
+    #TODO: test post order
+
 
 # Execute the switched test bench
 if test_mode == 'Node':
@@ -155,4 +185,6 @@ elif test_mode == 'queue':
     test_queue()
 elif test_mode == 'stack':
     test_stack()
+elif test_mode == 'BST':
+    test_BST()
 

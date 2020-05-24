@@ -51,6 +51,9 @@ class DoubleNode:
         return self.prev
 
 
+
+
+
 # Linked List class
 class LinkedList:
     # Constructor - Merely creating an empty linked list
@@ -286,15 +289,54 @@ class Queue:
             current_node = current_node.get_next()
 
 
+# TreeNode class - node used for tree data structures
+class TreeNode:
+    # Constructor
+    def __init__(self,current_node):
+        self.current_node = current_node # current node
+        self.left_child = None # Initialize child as Null
+        self.right_child = None # Initialize child as Null
+        self.parent = None # Initialize parent as Null
+
+    def insert(self,data):
+        if self.current_node == data:  # is current node same as inserted node?
+            return False  # don't do anything
+        elif data < self.current_node:
+            if self.left_child:  # if left child exists, insert data into left child (recursion)
+                return self.left_child.insert(data)
+            else:
+                self.left_child = TreeNode(data)  # set data as the left_child to current_node
+                return True
+        else:
+            if self.right_child:
+                self.right_child.insert(data)
+            else:
+                self.right_child = TreeNode(data)
+                return True
+
+
+
+
+
+        # check if left node exists
+
+        # check right
+
+
 # Binary Search Tree class
 class BST:
     # Constructor - Creating an empty BST
     def __init__(self):
         self.root = None
 
-    # Insert the new data at the front of the queue
     def insert(self, data):
-        print("I am the Ice King")
+        # https://www.youtube.com/watch?v=YlgPi75hIBc is a good example of recursive insertion
+        if not self.root: # Is the BST empty?
+            self.root = TreeNode(data)
+        else:
+            self.root.insert(data) # self.root is Treenode object, so the .insert() will be the insert fun in Treenode
+
+
 
     # Search for the matching node throughout the BST
     def search(self, data):
