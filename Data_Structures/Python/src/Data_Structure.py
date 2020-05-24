@@ -398,6 +398,7 @@ class BST:
     def __init__(self):
         self.root = None
 
+    # insert node into tree: O(height) time complexity
     def insert(self, data):
         # https://www.youtube.com/watch?v=YlgPi75hIBc is a good example of recursive insertion
         if not self.root: # Is the BST empty?
@@ -405,28 +406,28 @@ class BST:
         else:
             self.root.insert(data) # self.root is Treenode object, so the .insert() will be the insert fun in Treenode
 
-    # Search for the matching node throughout the BST
+    # Search for the matching node throughout the BST: time complexity same as insert
     def search(self, data):
         if self.root:
             return self.root.search(data)
         else:
             print("Tree is empty")
 
-    # Search for the right node contains the min value throughout the BST
+    # Search for the right node contains the min value throughout the BST: time complexity same as insert
     def find_min(self):
         if self.root:
             return self.root.min()
         else:
             print("Tree is empty")
 
-    # Search for the right node contains the max value throughout the BST
+    # Search for the right node contains the max value throughout the BST: time complexity same as insert
     def find_max(self):
         if self.root:
             return self.root.max()
         else:
             print("Tree is empty")
 
-    # Compute the height of the BST - Use recursion to implement
+    # Compute the height of the BST - Use recursion to implement: time complexity same as insert
     def find_height(self):
         if self.root:
             return self.root.height()
@@ -434,28 +435,28 @@ class BST:
             print("Tree is empty")
 
     # Traverse through all the nodes in BST and print them sequentially through the lower depth + from left to right
-    # Use Queue to implement
+    # Use Queue to implement: time complexity same as insert
     def level_order(self):
         if self.root:
             return self.root.level_order()
         else:
             print("Tree is empty")
 
-    # Traverse through the BST pre_order - Use recursion to implement
+    # Traverse through the BST pre_order - Use recursion to implement: time complexity same as insert
     def pre_order(self):
         if self.root:
             return self.root.pre_order()
         else:
             print("Tree is empty")
 
-    # Traverse through the BST in_order - Use recursion to implement
+    # Traverse through the BST in_order - Use recursion to implement: time complexity same as insert
     def in_order(self):
         if self.root:
             return self.root.in_order()
         else:
             print("Tree is empty")
 
-    # Traverse through the BST post_order - Use recursion to implement
+    # Traverse through the BST post_order - Use recursion to implement: time complexity same as insert
     def post_order(self):
         if self.root:
             return self.root.post_order()
