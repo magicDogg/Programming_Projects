@@ -263,9 +263,16 @@ class Queue:
     def dequeue(self):
         # return data from end of queue (tail)
         old_tail = self.tail
-        # replace tail with prev node
-        self.tail = self.tail.get_prev()
-        self.tail.set_next(None)
+
+        # if this is the last node in the queue
+        if self.size() == 1:
+            self.head = None
+            self.tail = None
+        # if there are more nodes in the queue
+        else:
+            # replace tail with prev node
+            self.tail = self.tail.get_prev()
+            self.tail.set_next(None)
         return old_tail.get_data()
 
     # return size of queue
@@ -340,14 +347,50 @@ class TreeNode:
             return self.right_child.max()
         print(self.current_val)
 
+    def height(self):
+        if self.right_child and self.left_child:
+            return 1 + max(self.right_child.height(), self.left_child.height())
+        elif self.right_child:
+            return 1 + self.right_child.height()
+        elif self.left_child:
+            return 1 + self.left_child.height()
+        else:
+            return 1
 
+    def in_order(self):
+        if self:
+            if self.left_child:
+                self.left_child.in_order()
+            print(self.current_val)
+            if self.right_child:
+                self.right_child.in_order()
 
+    def pre_order(self):
+        if self:
+            print(self.current_val)
+            if self.left_child:
+                self.left_child.pre_order()
+            if self.right_child:
+                self.right_child.pre_order()
 
+    def post_order(self):
+        if self:
+            if self.left_child:
+                self.left_child.post_order()
+            if self.right_child:
+                self.right_child.post_order()
+            print(self.current_val)
 
-        # check if left node exists
-
-        # check right
-
+    def level_order(self):
+        q = Queue()
+        q.enqueue(self)
+        while not q.size() == 0:
+            node = q.dequeue()
+            if (node.left_child):
+                q.enqueue(node.left_child)
+            if (node.right_child):
+                q.enqueue(node.right_child)
+            print(node.current_val)
 
 # Binary Search Tree class
 class BST:
@@ -361,8 +404,6 @@ class BST:
             self.root = TreeNode(data)
         else:
             self.root.insert(data) # self.root is Treenode object, so the .insert() will be the insert fun in Treenode
-
-    # TODO: add a print function to use for testing
 
     # Search for the matching node throughout the BST
     def search(self, data):
@@ -387,21 +428,36 @@ class BST:
 
     # Compute the height of the BST - Use recursion to implement
     def find_height(self):
-        print("I am the Ice King")
+        if self.root:
+            return self.root.height()
+        else:
+            print("Tree is empty")
 
     # Traverse through all the nodes in BST and print them sequentially through the lower depth + from left to right
     # Use Queue to implement
     def level_order(self):
-        print("I am the Ice King")
+        if self.root:
+            return self.root.level_order()
+        else:
+            print("Tree is empty")
 
     # Traverse through the BST pre_order - Use recursion to implement
     def pre_order(self):
-        print("I am the Ice King")
+        if self.root:
+            return self.root.pre_order()
+        else:
+            print("Tree is empty")
 
     # Traverse through the BST in_order - Use recursion to implement
     def in_order(self):
-        print("I am the Ice King")
+        if self.root:
+            return self.root.in_order()
+        else:
+            print("Tree is empty")
 
     # Traverse through the BST post_order - Use recursion to implement
     def post_order(self):
-        print("I am the Ice King")
+        if self.root:
+            return self.root.post_order()
+        else:
+            print("Tree is empty")

@@ -145,6 +145,7 @@ def test_stack():
 def test_BST():
     # mbst stands for my binary search tree
     mbst = DS.BST()
+    empty_mbst = DS.BST()
 
     # Test insert function (insert left and right with two levels)
     mbst.insert(5)
@@ -171,23 +172,69 @@ def test_BST():
     mbst.search(4)
     mbst.search(7)
     mbst.search(25)
+    empty_mbst.search(3)  # should be "Tree Empty"
 
     # test find_min
     mbst.find_min()  # should be 2
     mbst.insert(-5)
     mbst.find_min()  # should be -5
+    empty_mbst.find_min()  # should be "Tree Empty"
 
     # test find max
     mbst.find_max() # should be 8
     mbst.insert(35)
     mbst.find_max() # should be 35
+    empty_mbst.find_max()   # should be "Tree Empty"
+
+    # At this point, the tree looks like this:
+    #                 5
+    #              /     \
+    #             3       7
+    #            / \     / \
+    #           2   4   6   8
+    #         /               \
+    #       -5                 35
+
+    # test find height
+    print("here is height")
+    print(mbst.find_height()) # should be 4
+    mbst.insert(36)
+    print(mbst.find_height()) # should be 5
+    mbst.insert(-6)
+    mbst.insert(-7)
+    print(mbst.find_height()) # should be 6
+
+    # At this point, the tree looks like this:
+    #                        5
+    #                     /     \
+    #                    3       7
+    #                   / \     / \
+    #                  2   4   6   8
+    #                /               \
+    #              -5                 35
+    #             /                    \
+    #           -6                      36
+    #          /
+    #       -7
+
+    # test in order
+    print("here is the in_order")
+    mbst.in_order()
+
+    # test pre order
+    print("here is the pre_order")
+    mbst.pre_order()
+
+    # test post order
+    print("here is the post_order")
+    mbst.post_order()
 
 
-    #TODO: test find height
     #TODO: test level order
-    #TODO: test pre order
-    #TODO: test in order
-    #TODO: test post order
+    print("here is the level_order")
+    mbst.level_order()
+
+
 
 
 # Execute the switched test bench
