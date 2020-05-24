@@ -292,16 +292,16 @@ class Queue:
 # TreeNode class - node used for tree data structures
 class TreeNode:
     # Constructor
-    def __init__(self,current_node):
-        self.current_node = current_node # current node
+    def __init__(self,current_val):
+        self.current_val = current_val # current node
         self.left_child = None # Initialize child as Null
         self.right_child = None # Initialize child as Null
         self.parent = None # Initialize parent as Null
 
-    def insert(self,data):
-        if self.current_node == data:  # is current node same as inserted node?
+    def insert(self, data):
+        if self.current_val == data:  # is current node same as inserted node?
             return False  # don't do anything
-        elif data < self.current_node:
+        elif data < self.current_val:
             if self.left_child:  # if left child exists, insert data into left child (recursion)
                 return self.left_child.insert(data)
             else:
@@ -313,6 +313,32 @@ class TreeNode:
             else:
                 self.right_child = TreeNode(data)
                 return True
+
+    def search(self, data):
+        if data == self.current_val:  # check if current node matches
+            print(self.current_val)
+            # check if you should search left
+        elif data < self.current_val:
+            if self.left_child:  # check if left node exists
+                return self.left_child.search(data)
+            else:  # if left node doesn't exist
+                print("Not found")
+            # check if you should search right
+        elif data > self.current_val:
+            if self.right_child: # check if right node exists
+                return self.right_child.search(data)
+            else: # if right node doesn't exist
+                print("not found")
+
+    def min(self):
+        while self.left_child:
+            return self.left_child.min()
+        print(self.current_val)
+
+    def max(self):
+        while self.right_child:
+            return self.right_child.max()
+        print(self.current_val)
 
 
 
@@ -336,19 +362,28 @@ class BST:
         else:
             self.root.insert(data) # self.root is Treenode object, so the .insert() will be the insert fun in Treenode
 
-
+    # TODO: add a print function to use for testing
 
     # Search for the matching node throughout the BST
     def search(self, data):
-        print("I am the Ice King")
+        if self.root:
+            return self.root.search(data)
+        else:
+            print("Tree is empty")
 
     # Search for the right node contains the min value throughout the BST
     def find_min(self):
-        print("I am the Ice King")
+        if self.root:
+            return self.root.min()
+        else:
+            print("Tree is empty")
 
     # Search for the right node contains the max value throughout the BST
     def find_max(self):
-        print("I am the Ice King")
+        if self.root:
+            return self.root.max()
+        else:
+            print("Tree is empty")
 
     # Compute the height of the BST - Use recursion to implement
     def find_height(self):

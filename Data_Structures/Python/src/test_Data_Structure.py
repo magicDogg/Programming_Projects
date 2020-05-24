@@ -162,9 +162,27 @@ def test_BST():
     #            / \     / \
     #           2   4   6   8
 
-    #TODO: test search
-    #TODO: test find min
-    #TODO: test find max
+    # Test search function - should return 5, 3, 6, 8, 2, 4, 7, 'not found'
+    mbst.search(5)
+    mbst.search(3)
+    mbst.search(6)
+    mbst.search(8)
+    mbst.search(2)
+    mbst.search(4)
+    mbst.search(7)
+    mbst.search(25)
+
+    # test find_min
+    mbst.find_min()  # should be 2
+    mbst.insert(-5)
+    mbst.find_min()  # should be -5
+
+    # test find max
+    mbst.find_max() # should be 8
+    mbst.insert(35)
+    mbst.find_max() # should be 35
+
+
     #TODO: test find height
     #TODO: test level order
     #TODO: test pre order
