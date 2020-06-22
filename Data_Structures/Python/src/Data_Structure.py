@@ -306,8 +306,8 @@ class TreeNode:
         self.parent = None # Initialize parent as Null
 
     def insert(self, data):
-        if self.current_val == data:  # is current node same as inserted node?
-            return False  # don't do anything
+        if self.current_val == data:  # is current node same as inserted node just place to the left
+            return self.left_child.insert(data)
         elif data < self.current_val:
             if self.left_child:  # if left child exists, insert data into left child (recursion)
                 return self.left_child.insert(data)
