@@ -462,3 +462,78 @@ class BST:
             return self.root.post_order()
         else:
             print("Tree is empty")
+
+
+# vertex class used in graph class
+class Vertex:
+    # Constructor
+    def __init__(self, id, weight):
+        self.id = id  # string
+        self.edges = [weight] # this is a list containing the vertex weight and all of the edges (vertex id's)
+
+
+#  graph class with only vertex weight
+class Graph:
+    # Constructor
+    def __init__(self):
+        # adj_list dictionary with key equal to id of vertex, and value equal to a vertex object
+        self.adj_list = {}
+
+    def add_vertex(self, vertex_object):
+        if vertex_object.id in self.adj_list:
+            print("Vertex id already exists in graph. Vertex id's must be unique")
+        else:
+            self.adj_list[vertex_object.id] = vertex_object.edges
+
+    def add_edge(self, vertex_1, vertex_2):
+        if vertex_1.id in self.adj_list and vertex_2.id in self.adj_list:
+            vertex_1.edges.append(vertex_2.id)  # add vertex 2 to vertex 1 list of edges (neighbor vertex)
+            vertex_2.edges.append(vertex_1.id)  # add vertex 1 to vertex 2 list of edges (neighbor vertex)
+        elif vertex_1.id in self.adj_list:
+            print(vertex_2.id+' is not a vertex in the graph')
+        elif vertex_2.id in self.adj_list:
+            print(vertex_1.id + ' is not a vertex in the graph')
+        else:
+            print('neither vertex is in this graph, what are you doing??')
+
+    def print_graph(self):
+        print(self.adj_list)
+
+
+#  graph class with vertex and edgeweight
+class WeightedEdgeGraph:
+    # Constructor
+    def __init__(self):
+        # adj_list dictionary with key equal to id of vertex, and value equal to a vertex object
+        self.adj_list = {}
+
+    def add_vertex(self, vertex_object):
+        if vertex_object.id in self.adj_list:
+            print("Vertex id already exists in graph. Vertex id's must be unique")
+        else:
+            self.adj_list[vertex_object.id] = vertex_object.edges
+
+    # add dict: {'neighbor vertex id': edge weight} to each vertex.edges list
+    def add_edge(self, vertex_1, vertex_2, edge_weight):
+        if vertex_1.id in self.adj_list and vertex_2.id in self.adj_list:
+            vertex_1.edges.append({vertex_2.id:edge_weight})  # add vertex 2 to vertex 1 list of edges (neighbor vertex)
+            vertex_2.edges.append({vertex_1.id:edge_weight})  # add vertex 1 to vertex 2 list of edges (neighbor vertex)
+        elif vertex_1.id in self.adj_list:
+            print(vertex_2.id+' is not a vertex in the graph')
+        elif vertex_2.id in self.adj_list:
+            print(vertex_1.id + ' is not a vertex in the graph')
+        else:
+            print('neither vertex is in this graph, what are you doing??')
+
+    def print_graph(self):
+        print(self.adj_list)
+
+
+
+
+
+# directed graph class
+class directed_graph:
+    # Constructor
+    def __init__(self):
+        self.root = None

@@ -5,7 +5,7 @@ import Data_Structure as DS
 
 
 # Test bench switch
-test_mode = 'BST'
+test_mode = 'edge_weighted_graph'
 
 
 # Test Node class
@@ -230,11 +230,74 @@ def test_BST():
     mbst.post_order()
 
 
-    #TODO: test level order
+    # test level order
     print("here is the level_order")
     mbst.level_order()
 
 
+def test_graph():
+    # create graph object
+    mg = DS.Graph()  # mg stands for 'my graph'
+
+    # create a few vertex objects
+    v1 = DS.Vertex('a',2)
+    v2 = DS.Vertex('b',1)
+    v3 = DS.Vertex('c',14)
+    v4 = DS.Vertex('d',22)
+    v5 = DS.Vertex('a',0)
+    v6 = DS.Vertex('e', 6)
+    v7 = DS.Vertex('f', 28)
+
+    # add vertices to graph
+    mg.add_vertex(v1)
+    mg.add_vertex(v2)
+    mg.add_vertex(v3)
+    mg.add_vertex(v4)
+
+    # try to add vertex with duplicate id
+    mg.add_vertex(v5)
+
+    # add edges between some vertices
+    mg.add_edge(v1,v2)
+    mg.add_edge(v2,v3)
+    mg.add_edge(v4,v1)
+    mg.add_edge(v4,v2)
+
+    # try to add edge between vertex in graph and vertex not in graph
+    mg.add_edge(v1,v6)
+    mg.add_edge(v6,v1)
+
+    # try to add edge between two vertices not in graph
+    mg.add_edge(v6,v7)
+
+    # print the graph
+    mg.print_graph()
+
+
+def test_edge_weighted_graph():
+    # create graph object
+    mwg = DS.WeightedEdgeGraph()  # mwg stands for 'my weighted graph'
+
+    # create a few vertex objects
+    v1 = DS.Vertex('a', 2)
+    v2 = DS.Vertex('b', 1)
+    v3 = DS.Vertex('c', 14)
+    v4 = DS.Vertex('d', 22)
+
+    # add vertices to graph
+    mwg.add_vertex(v1)
+    mwg.add_vertex(v2)
+    mwg.add_vertex(v3)
+    mwg.add_vertex(v4)
+
+    # add edges between some vertices
+    mwg.add_edge(v1, v2, 22)
+    mwg.add_edge(v2, v3, 15)
+    mwg.add_edge(v4, v1, 0)
+    mwg.add_edge(v4, v2, 5)
+
+    # print the graph
+    mwg.print_graph()
 
 
 # Execute the switched test bench
@@ -252,4 +315,8 @@ elif test_mode == 'stack':
     test_stack()
 elif test_mode == 'BST':
     test_BST()
+elif test_mode == 'graph':
+    test_graph()
+elif test_mode == 'edge_weighted_graph':
+    test_edge_weighted_graph()
 
