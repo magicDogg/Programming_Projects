@@ -528,12 +528,3 @@ class WeightedEdgeGraph:
     def print_graph(self):
         print(self.adj_list)
 
-
-
-
-
-# directed graph class
-class directed_graph:
-    # Constructor
-    def __init__(self):
-        self.root = None
